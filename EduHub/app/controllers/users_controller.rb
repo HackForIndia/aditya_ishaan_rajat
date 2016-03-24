@@ -2,8 +2,12 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def new
+    @user = User.new
   end
 
+  def index
+    @users = User.all
+  end
   # POST /users
   # POST /users.json
   def create
@@ -49,6 +53,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, :UID, :address)
+      params.require(:user).permit(:name, :UID, :address, :password_digest)
     end
 end

@@ -1,4 +1,4 @@
-class TTSWatson
+module TTSWatson
     include HTTParty
     base_uri 'https://watson-api-explorer.mybluemix.net'
     
