@@ -5,9 +5,6 @@ class BooksController < ApplicationController
   # GET /books.json
   def index
     @books = Book.all
- 
-    watson = PersonalityInsights.new(chars.to_sentence)
-    notice = watson.profile
     #To DO
   end
 
