@@ -1,5 +1,4 @@
 class PagesController < ApplicationController
-  include ActionController::Live
   before_action :set_page, only: [:show, :edit, :update, :destroy]
   # GET /pages
   # GET /pages.json
