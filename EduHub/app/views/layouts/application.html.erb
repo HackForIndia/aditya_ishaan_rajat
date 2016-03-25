@@ -6,7 +6,7 @@
 </head>
 <body>
 <% if current_user %>
-	<p class="btn btn-default"><%= link_to "current_user.name", root_path %></p>
+	<p class="btn btn-default"><%= link_to current_user.name, root_path %></p>
 	<%= link_to "Log out", logout_path, method: "delete" , class: "btn btn-default"%>
 <% else %>
 	<%= link_to "Log In", login_path, method: "post", class: "btn btn-default" %>

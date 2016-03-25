@@ -5,12 +5,6 @@ class BooksController < ApplicationController
   # GET /books.json
   def index
     @books = Book.all
-    chars = []
-    @books.each do |book|
-      book.pages.each do |page|
-        chars << page.notes
-      end
-    end
  
     watson = PersonalityInsights.new(chars.to_sentence)
     notice = watson.profile
@@ -20,11 +14,6 @@ class BooksController < ApplicationController
   # GET /books/1
   # GET /books/1.json
   def show
-    @pages = Pages.all
-  end
-
-  def file(pages)
-    @book.pages = pages
   end
 
   # GET /books/new

@@ -11,12 +11,6 @@
   <dt><strong><%= model_class.human_attribute_name(:made_by) %>:</strong></dt>
   <dd><%= @book.user.name %></dd>
   <dt><strong><%= model_class.human_attribute_name(:pages) %>:</strong></dt>
-  <dd><strong> Select pages to add to this book: </strong></dd>
-  <dd><%= @pages.each do |page| %></dd>
-  <ul>
-    <li><%= link_to page.question, :action => "file" %></li>
-    <% end %>
-  </ul>
   <div class="dl-horizontal">
     <p>Here are your personality insights!</p>
     <%= flash[:notice] %>
