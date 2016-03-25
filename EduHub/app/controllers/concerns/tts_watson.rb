@@ -4,8 +4,8 @@ class TtsWatson
     
   def initialize(input)
     @query = {
-      user: ENV["IBM_USER"],
-      password: ENV["IBM_PASS"],
+      user: ENV["TTS_USER"],
+      password: ENV["TTS_PASS"],
       accept: 'audio/flac',
       voice: 'en-US_MichaelVoice',
       text: input

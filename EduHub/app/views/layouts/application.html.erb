@@ -8,11 +8,15 @@
 </head>
 <body>
 <% if current_user %>
+	<p><%= current_user.name %></p>
 	<%= link_to "Log out", logout_path, method: "delete" %>
+<% else %>
+	<%= link_to "Log In", login_path, method: "post" %>
 <% end %>
 <% if flash[:notice] %>
 	<p><%= flash[:notice] %></p>
 <% end %>
+<%= link_to "Create a page Today!", new_page_path %>
 <%= yield %>
 
 </body>

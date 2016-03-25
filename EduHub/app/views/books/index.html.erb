@@ -18,7 +18,7 @@
         <td><%= link_to book.id, book_path(book) %></td>
         <td><%= book.title %></td>
         <td><%= book.cluster %></td>
-        <td><%=l book.created_at %></td>
+        <td><%= book.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_book_path(book), :class => 'btn btn-default btn-xs' %>

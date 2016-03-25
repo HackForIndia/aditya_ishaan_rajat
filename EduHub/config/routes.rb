@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
   root 'home#index'
 
+  post '/login' => 'users#login'
+  delete '/logout' => 'users#logout'
+
   resources :books
   resources :pages
-  resources :users
+  resources :users, only: [:create, :new, :index, :show, :delete, :edit]
   
-  post 'login' => 'users#login'
-  delete 'logout' => 'users#logout'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -8,6 +8,18 @@
   <dd><%= @book.title %></dd>
   <dt><strong><%= model_class.human_attribute_name(:cluster) %>:</strong></dt>
   <dd><%= @book.cluster %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:made_by) %>:</strong></dt>
+  <dd><%= @book.user %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:pages) %>:</strong></dt>
+  <dd><%= @book.pages.each do |page| %></dd>
+  <ul>
+    <li><% page.question %></li>
+    <% end %>
+  </ul>
+  <div class="dl-horizontal">
+    <p>Here are your personality insights!</p>
+    <%= flash[:notice] %>
+  </div>
 </dl>
 
 <%= link_to t('.back', :default => t("helpers.links.back")),

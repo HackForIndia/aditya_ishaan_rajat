@@ -5,6 +5,16 @@ class BooksController < ApplicationController
   # GET /books.json
   def index
     @books = Book.all
+    chars = []
+    @books.each do |book|
+      book.pages.each do |page|
+        chars << @page.notes
+      end
+    end
+ 
+    watson = PersonalityInsights.new(chars.to_sentence)
+    notice = watson.profile
+    #To DO
   end
 
   # GET /books/1
@@ -14,6 +24,7 @@ class BooksController < ApplicationController
 
   # GET /books/new
   def new
+    redirect_to new_user_path if !current_user
     @book = Book.new
   end
 
@@ -69,6 +80,6 @@ class BooksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def book_params
-      params.require(:book).permit(:title, :cluster)
+      params.require(:book).permit(:title, :cluster).merge(user_id: current_user.id)
     end
 end

@@ -12,10 +12,10 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(user_params)
-
     respond_to do |format|
       if @user.save
-        format.html { redirect_to :root, notice: "Welcome #{@user.name}!" }
+        session[:user_id] = @user.id
+        format.html { redirect_to :root, notice: "It's your first time here!" }
       else
         format.html { render :new }
         format.json { render json: @user.errors, status: :unprocessable_entity }
@@ -29,11 +29,11 @@ class UsersController < ApplicationController
     @user.destroy
   end
 
-
   def login
-      if @user && @user.authenticate(params[:user][:password])
+      @user = User.find_by! UID: user_params[:UID]
+      if @user && @user.authenticate(user_params[:user][:password])
         session[:user_id] = @user.id
-        redirect_to :root
+        format.html { redirect_to :root, notice: "Welcome back #{@user.name}!" }
       else
         render :new
       end 
@@ -52,6 +52,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, :UID, :address, :password_digest)
+      params.require(:user).permit(:name, :UID, :address, :password)
     end
 end
