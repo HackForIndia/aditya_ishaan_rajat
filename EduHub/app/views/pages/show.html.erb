@@ -11,7 +11,7 @@
   <dt><strong><%= model_class.human_attribute_name(:upvotes) %>:</strong></dt>
   <dd><%= @page.upvotes %></dd>
   <dt><strong><%= model_class.human_attribute_name(:audio_notes) %>:</strong></dt>
-    <dd><% audio_tag @audio_file %></dd>
+    <dd><% audio_tag @audio_file.path, class: "audio-play" %></dd>
     <p class="btn btn-primary audioButton"> Play </p>
 </dl>
 
