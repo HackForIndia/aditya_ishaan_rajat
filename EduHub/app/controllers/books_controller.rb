@@ -20,6 +20,11 @@ class BooksController < ApplicationController
   # GET /books/1
   # GET /books/1.json
   def show
+    @pages = Pages.all
+  end
+
+  def file(pages)
+    @book.pages = pages
   end
 
   # GET /books/new

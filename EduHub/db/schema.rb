@@ -31,12 +31,14 @@ ActiveRecord::Schema.define(version: 20160325063634) do
     t.string   "question"
     t.string   "notes"
     t.integer  "upvotes"
+    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  add_index "pages", ["book_id"], name: "index_pages_on_book_id", using: :btree
+
   create_table "users", force: :cascade do |t|
-    t.integer  "book_id"
     t.string   "name"
     t.string   "UID"
     t.string   "address"

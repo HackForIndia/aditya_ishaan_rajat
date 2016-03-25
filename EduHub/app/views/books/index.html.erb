@@ -15,10 +15,10 @@
   <tbody>
     <% @books.each do |book| %>
       <tr>
-        <td><%= link_to book.id, book_path(book) %></td>
-        <td><%= book.title %></td>
+        <td><%= book.id %></td>
+        <td><%= link_to book.title, book_path(book) %></td>
         <td><%= book.cluster %></td>
-        <td><%= book.created_at %></td>
+        <td><%=l book.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_book_path(book), :class => 'btn btn-default btn-xs' %>

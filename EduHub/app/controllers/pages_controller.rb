@@ -10,7 +10,7 @@ class PagesController < ApplicationController
   # GET /pages/1.json
   def show
     watson = TtsWatson.new(@page.notes)
-    audio_file = "./public/audios/output#{@page.id}.wav"
+    audio_file = "./app/assets/audios/output#{@page.id}.wav"
     File.open(audio_file,'wb') do |f|
       f.write watson.synthesize.body
     end
