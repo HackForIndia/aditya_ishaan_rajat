@@ -11,7 +11,11 @@
   <dt><strong><%= model_class.human_attribute_name(:upvotes) %>:</strong></dt>
   <dd><%= @page.upvotes %></dd>
   <dt><strong><%= model_class.human_attribute_name(:audio_notes) %>:</strong></dt>
-    <dd><%= audio_tag "output#{@page.id}.wav", controls: true, autoplay: true, type: "audio/wav" %></dd>
+  <dd><%= audio_tag "output#{@page.id}.wav", controls: true, autoplay: true, type: "audio/wav" %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:list_of_books) %>:</strong></dt>
+  <dd><% current_user.books.each do |book| %></dd>
+  <dd><%= link_to book.title, book_path(book) %></dd>
+  <dd><% end %></dd>
 </dl>
 
 <%= link_to t('.back', :default => t("helpers.links.back")),

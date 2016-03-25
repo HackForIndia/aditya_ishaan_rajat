@@ -8,7 +8,7 @@ class BooksController < ApplicationController
     chars = []
     @books.each do |book|
       book.pages.each do |page|
-        chars << @page.notes
+        chars << page.notes
       end
     end
  
