@@ -11,8 +11,7 @@
   <dt><strong><%= model_class.human_attribute_name(:upvotes) %>:</strong></dt>
   <dd><%= @page.upvotes %></dd>
   <dt><strong><%= model_class.human_attribute_name(:audio_notes) %>:</strong></dt>
-    <dd><% audio_tag @audio_file.path, class: "audio-play" %></dd>
-    <p class="btn btn-primary audioButton"> Play </p>
+    <dd><%= audio_tag "output#{@page.id}.wav", controls: true, autoplay: true, type: "audio/wav" %></dd>
 </dl>
 
 <%= link_to t('.back', :default => t("helpers.links.back")),
