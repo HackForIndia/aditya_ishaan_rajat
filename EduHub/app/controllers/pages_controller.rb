@@ -18,6 +18,7 @@ class PagesController < ApplicationController
 
   # GET /pages/new
   def new
+    redirect_to new_user_path if !current_user
     @page = Page.new
     watson = SttWatson.new()
   end
