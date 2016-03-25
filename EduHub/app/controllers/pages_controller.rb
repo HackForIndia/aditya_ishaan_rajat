@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
+  include ActionController::Live
   before_action :set_page, only: [:show, :edit, :update, :destroy]
-  helper TTSWatson
   # GET /pages
   # GET /pages.json
   def index
@@ -10,8 +10,10 @@ class PagesController < ApplicationController
   # GET /pages/1
   # GET /pages/1.json
   def show
-    watson = PagesController::TTSWatson.new("text")
-    @audio = watson.synthesize
+    watson = TtsWatson.new(@page.notes)
+    @audio_file = File.open('./public/audios/output.flac','wb') do |f|
+      f.write watson.synthesize.body
+    end
   end
 
   # GET /pages/new
